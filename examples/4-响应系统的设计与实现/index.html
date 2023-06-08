@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+
+    <!-- <script src="4-2.js"></script>
+    <script>
+        function effect () {
+            document.querySelector('#root').textContent = obj.text
+        }
+
+        effect();
+
+        setTimeout(() => {
+            obj.text = 'Hello Vue 3.';
+        }, 2000)
+    </script> -->
+
+    <!-- 未建立响应联系的属性也会触发副作用函数的执行 -->
+    <!-- <script src="4-3-1.js"></script>
+    <!-- <script src="4-3-2.js"></script>
+    <script>
+        effect(
+            // 副作用函数
+            () => {
+                console.log('effect run.') // 会执行两次
+                document.querySelector('#root').textContent = obj.text
+            }
+        )
+
+        setTimeout(() => {
+            obj.notExist = 'Hello vue.'
+        }, 1000)
+    </script> -->
+
+    <!-- 产生遗留的副作用函数 -->
+    <script src="4-3-3.js"></script>
+    <!-- <script src="4-4.js"></script> -->
+    <script>
+        effect(
+            // 副作用函数
+            () => {
+                console.log('run')
+                document.querySelector('#root').textContent = obj.ok ? obj.text : 'plain text.'
+            }
+        )
+
+        setTimeout(() => {
+            obj.ok = false;
+            setTimeout(() => {
+                obj.text = 'Hello again.'
+            }, 1000)
+        }, 1000)
+    </script>
+</body>
+</html>
