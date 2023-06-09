@@ -40,21 +40,24 @@
     </script> -->
 
     <!-- 产生遗留的副作用函数 -->
-    <script src="4-3-3.js"></script>
-    <!-- <script src="4-4.js"></script> -->
+    <!-- <script src="4-3-3.js"></script> -->
+    <script src="4-4.js"></script>
     <script>
         effect(
             // 副作用函数
             () => {
                 console.log('run')
-                document.querySelector('#root').textContent = obj.ok ? obj.text : 'plain text.'
+                document.querySelector('#root').textContent = obj.ok ? obj.text : 'plain text.';
+                console.log('------end------');
             }
         )
 
         setTimeout(() => {
             obj.ok = false;
+            console.log('-------false-------');
             setTimeout(() => {
                 obj.text = 'Hello again.'
+                console.log('-------obj.text-------');
             }, 1000)
         }, 1000)
     </script>

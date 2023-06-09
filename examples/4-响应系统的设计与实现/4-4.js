@@ -13,7 +13,7 @@ function effect(fn) {
     }
 
     // 使用 effectFn.deps 为缓存所有与该副作用函数相关联的集合
-    effectFn.deps = [];
+    effectFn.deps = []; // 因为fn是用户的函数，如果直接 fn.deps = [] 会破坏用户的函数，所以利用闭包来引用
     // 执行副作用函数
     effectFn();
 }

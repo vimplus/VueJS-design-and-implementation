@@ -113,7 +113,7 @@ const vnode = {
 我们需要编写一个渲染器，把上面的代码渲染成真实 DOM：
 
 ```javascript
-function renderer (vnode, container) {
+function renderer(vnode, container) {
   const el = document.createElement(vnode.tag)
 
   // 处理属性
@@ -393,6 +393,6 @@ export default {
 * 虚拟 DOM —— 更加灵活；模板 —— 更加直观；
 * 渲染器的作用 —— 把虚拟 DOM 对象渲染为真实 DOM 元素。
 * 渲染器的工作原理 —— **递归地遍历虚拟 DOM 对象，并调用原生DOM API 来完成真实 DOM 的创建**。
-* **组件其实就是一组虚拟 DOM 元素的封装**，它可以是一个返回虚拟 DOM 的函数，也可以是一个对象，但这个对象下必须要有一个函数用来产出组件要渲染的虚拟 DOM。
+* **组件其实就是一组虚拟 DOM 元素的封装**，它可以是**一个返回虚拟 DOM 的函数，也可以是一个对象**，但这个对象下必须要有一个函数用来产出组件要渲染的虚拟 DOM。
 * Vue.js 的模板会被一个叫作**编译器**的程序**编译为渲染函数**；
 * 编译器、渲染器都是 Vue.js 的核心组成部分，它们共同构成一个有机的整体，不同模块之间互相配合，进一步提升框架性能。
