@@ -59,7 +59,6 @@ function track(target, key) {
     // 再根据 key 从 depsMap 中取出 deps，它是一个 Set 类型
     // 里面存储着所有与当前 key 相当的副作用函数
     let deps = depsMap.get(key)
-
     if (!deps) {
         depsMap.set(key, (deps = new Set()))
     }
