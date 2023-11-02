@@ -41,25 +41,46 @@
 
     <!-- 产生遗留的副作用函数 -->
     <!-- <script src="4-3-3.js"></script> -->
-    <script src="4-4.js"></script>
+    <script src="4-5-2.js"></script>
     <script>
-        effect(
-            // 副作用函数
-            () => {
-                console.log('run');
-                document.querySelector('#root').textContent = obj.ok ? obj.text : 'plain text.';
-                console.log('------end------');
-            }
-        )
+        // effect(
+        //     // 副作用函数
+        //     () => {
+        //         console.log('run');
+        //         document.querySelector('#root').textContent = obj.ok ? obj.text : 'plain text.';
+        //         console.log('------end------');
+        //     }
+        // )
+
+        // setTimeout(() => {
+        //     obj.ok = false;
+        //     console.log('-------false-------');
+        //     setTimeout(() => {
+        //         obj.text = 'Hello again.'
+        //         console.log('-------obj.text-------');
+        //     }, 1000)
+        // }, 1000)
+
+        // 全局变量
+        let temp1
+        let temp2
+
+        // 嵌套
+        effect(function effectFn1 () {
+            console.log('effectFn1 执行')
+        
+            effect(function effectFn2 () {
+                console.log('effectFn2 执行')
+                
+                temp2 = obj.bar
+            })
+        
+            temp1 = obj.foo
+        });
 
         setTimeout(() => {
-            obj.ok = false;
-            console.log('-------false-------');
-            setTimeout(() => {
-                obj.text = 'Hello again.'
-                console.log('-------obj.text-------');
-            }, 1000)
-        }, 1000)
+            obj.foo = false;
+        }, 1000);
     </script>
 </body>
 </html>
